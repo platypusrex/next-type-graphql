@@ -1,7 +1,7 @@
 {
   "name": "next-type-graphql",
   "description": "Apollo TypeGraphQL micro server for Next.js api routes",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "author": {
     "name": "Frank Cooke",
     "email": "frankcooke79@gmail.com"
@@ -40,7 +40,8 @@
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "npx rimraf ./dist",
     "lint": "eslint \"src/**/*.{ts,tsx,js}\"",
-    "lint:fix": "eslint --fix \"src/**/*.{ts,tsx,js}\""
+    "lint:fix": "eslint --fix \"src/**/*.{ts,tsx,js}\"",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
