@@ -7,6 +7,7 @@ import { ServerRegistration } from 'apollo-server-micro/dist/ApolloServer';
 import { MicroRequest } from 'apollo-server-micro/dist/types';
 import { BuildSchemaOptions, buildSchemaSync } from 'type-graphql/dist/utils/buildSchema';
 import { ConnectionOptions } from 'typeorm';
+import { connectTypeorm } from './adapters/typeorm';
 import { initMiddleware } from './utils/initMiddleware';
 
 export interface TypeGraphQLOptions {
@@ -48,7 +49,6 @@ export class TypeGraphQLServer extends ApolloServer {
   public createHandler(): (req: MicroRequest, res: ServerResponse) => Promise<void> {
     const handler = this.typeormOptions
       ? async (req: MicroRequest, res: ServerResponse) => {
-          const { connectTypeorm } = await import('./adapters/typeorm');
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           await connectTypeorm(this.typeormOptions!);
           return super.createHandler(this.serverRegistration)(req, res);
