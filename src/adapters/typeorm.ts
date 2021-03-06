@@ -68,7 +68,6 @@ export const connectTypeorm = async (connectionOptions: ConnectionOptions): Prom
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     await updateConnectionEntities(connection!, connectionOptions.entities);
   }
 };
