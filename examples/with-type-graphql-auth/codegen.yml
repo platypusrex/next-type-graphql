@@ -1,0 +1,27 @@
+overwrite: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+schema: "http://localhost:3001/api/graphql"
+documents: "src/graphql/**/*.graphql"
+generates:
+  src/types/generated.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+    config:
+      declarationKind: interface
+      flattenGeneratedTypes: true
+      preResolveTypes: true
+  src/hooks/generated.ts:
+    preset: import-types
+    presetConfig:
+      extension: .ts
+      typesPath: ../types/generated
+    plugins:
+      - "typescript-react-apollo"
+    config:
+      documentMode: external
+      importOperationTypesFrom: Types
+      importDocumentNodeExternallyFrom: ../graphql
+      addDocBlocks: false

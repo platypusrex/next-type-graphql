@@ -1,0 +1,7 @@
+#import '../fragments/userFragment.graphql'
+
+mutation Register ($input: RegisterInput!) {
+  register (input: $input) {
+    ...User
+  }
+}

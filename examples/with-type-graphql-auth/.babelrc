@@ -1,0 +1,3 @@
+{
+  "presets": ["next/babel", "next-type-graphql/babel"]
+}
